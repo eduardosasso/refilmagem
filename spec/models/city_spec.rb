@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Trailer do
+describe City do
   pending "add some examples to (or delete) #{__FILE__}"
 end

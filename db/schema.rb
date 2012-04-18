@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417051738) do
+ActiveRecord::Schema.define(:version => 20120418035832) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,8 +46,37 @@ ActiveRecord::Schema.define(:version => 20120417051738) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "casts", :force => true do |t|
+    t.integer  "movie_id"
+    t.string   "name",        :null => false
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "cities", :force => true do |t|
+    t.integer  "country_id", :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "genres", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "media", :force => true do |t|
+    t.integer  "movie_id",   :null => false
+    t.string   "url",        :null => false
+    t.integer  "type",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -64,6 +93,24 @@ ActiveRecord::Schema.define(:version => 20120417051738) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "genre_id"
+  end
+
+  create_table "showtimes", :force => true do |t|
+    t.integer  "movie_id",   :null => false
+    t.integer  "theater_id", :null => false
+    t.string   "hour",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "theaters", :force => true do |t|
+    t.string   "name",                                      :null => false
+    t.string   "address"
+    t.string   "site"
+    t.decimal  "lat",        :precision => 10, :scale => 0
+    t.decimal  "long",       :precision => 10, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "trailers", :force => true do |t|
