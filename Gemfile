@@ -4,6 +4,8 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 gem 'activeadmin'
 gem 'jquery-rails'
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.9"
