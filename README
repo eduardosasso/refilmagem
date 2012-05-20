@@ -1,6 +1,9 @@
-Refilmagem is all about movies.
+Refilmagem
+==========
 
-** Setup **
+
+
+* Places to remember *
 - /etc/nginx
 - /var/log/nginx/access.log
 - /var/log/nginx/error.log
