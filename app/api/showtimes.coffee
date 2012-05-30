@@ -9,4 +9,4 @@ class Showtimes
 		    $ = window.$
 		    @parser.run $
 
-module.exports = Showtimes		    
+module.exports = Showtimes

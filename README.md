@@ -4,6 +4,8 @@
 * coffee <file>
 * mocha --compilers coffee:coffee-script
 
+* coffee google_movies
+
 ### Config folders
 * /etc/nginx
 * /var/log/nginx/access.log

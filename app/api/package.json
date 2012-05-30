@@ -1,0 +1,28 @@
+{
+  "author": "Eduardo Sasso <eduardo.sasso@gmail.com> (http://eduardosasso.com)",
+  "name": "showtimes",
+  "description": "Movies API",
+  "version": "0.0.1",
+  "homepage": "http://api.refilmagem.com.br",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eduardosasso/refilmagem.git"
+  },
+  "main": "",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "jsdom": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "sinon": "*",
+    "chai": "*"
+
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
