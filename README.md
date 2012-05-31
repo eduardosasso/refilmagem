@@ -1,9 +1,7 @@
 # Refilmagem
 
 ### API - node.js
-* coffee <file>
-* mocha --compilers coffee:coffee-script
-
+* mocha
 * coffee google_movies
 
 ### Config folders
