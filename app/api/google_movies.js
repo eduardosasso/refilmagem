@@ -21,6 +21,7 @@
         });
         return movies.push(new Movie(name, showtimes));
       });
+      console.log(movies);
       return movies;
     };
 

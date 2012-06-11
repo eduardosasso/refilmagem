@@ -4,6 +4,11 @@
 * mocha
 * coffee google_movies
 
+### Rails
+rails s --port 4000
+http://refilmagem.dev:4000/admin - (admin@example.com/password)
+
+
 ### Config folders
 * /etc/nginx
 * /var/log/nginx/access.log

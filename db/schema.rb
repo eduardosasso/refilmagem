@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418035832) do
+ActiveRecord::Schema.define(:version => 20120611022434) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(:version => 20120418035832) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "adapters", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -59,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120418035832) do
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "state_id"
   end
 
   create_table "countries", :force => true do |t|
@@ -103,21 +110,25 @@ ActiveRecord::Schema.define(:version => 20120418035832) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "theaters", :force => true do |t|
-    t.string   "name",                                      :null => false
-    t.string   "address"
-    t.string   "site"
-    t.decimal  "lat",        :precision => 10, :scale => 0
-    t.decimal  "long",       :precision => 10, :scale => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-  end
-
-  create_table "trailers", :force => true do |t|
-    t.integer  "movie_id",   :null => false
-    t.string   "url",        :null => false
+  create_table "states", :force => true do |t|
+    t.integer  "country_id", :null => false
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "theaters", :force => true do |t|
+    t.string   "name",                                       :null => false
+    t.string   "address"
+    t.string   "site"
+    t.decimal  "lat",         :precision => 10, :scale => 7
+    t.decimal  "long",        :precision => 10, :scale => 7
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.integer  "adapter_id"
+    t.string   "scraper_url",                                :null => false
   end
 
 end
