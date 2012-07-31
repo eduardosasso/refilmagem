@@ -10,10 +10,12 @@
   },
   "main": "",
   "scripts": {
-    "test": "mocha"
+    "test": "/usr/local/bin/mocha"
   },
   "dependencies": {
-    "jsdom": "*"
+    "jsdom": "*",
+    "commander": "*",
+    "coffee-script": "*"
   },
   "devDependencies": {
     "mocha": "*",
