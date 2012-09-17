@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611022434) do
+ActiveRecord::Schema.define(:version => 20120801162147) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,11 +61,12 @@ ActiveRecord::Schema.define(:version => 20120611022434) do
   end
 
   create_table "cities", :force => true do |t|
-    t.integer  "country_id", :null => false
-    t.string   "name",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "country_id",              :null => false
+    t.string   "name",                    :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.integer  "state_id"
+    t.string   "state",      :limit => 2, :null => false
   end
 
   create_table "countries", :force => true do |t|
@@ -117,18 +118,25 @@ ActiveRecord::Schema.define(:version => 20120611022434) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "theater_networks", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "theaters", :force => true do |t|
-    t.string   "name",                                       :null => false
+    t.string   "name",                                               :null => false
     t.string   "address"
     t.string   "site"
-    t.decimal  "lat",         :precision => 10, :scale => 7
-    t.decimal  "long",        :precision => 10, :scale => 7
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.decimal  "lat",                 :precision => 10, :scale => 7
+    t.decimal  "long",                :precision => 10, :scale => 7
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.integer  "city_id"
     t.integer  "state_id"
     t.integer  "adapter_id"
-    t.string   "scraper_url",                                :null => false
+    t.string   "scraper_url",                                        :null => false
+    t.integer  "theater_networks_id"
   end
 
 end
