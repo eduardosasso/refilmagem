@@ -1,13 +1,19 @@
 # Refilmagem
 
-### API - node.js
+### Node console
+	node
+	g = require("./google_movies");
+	url = "http://www.google.com.br/movies?near=san+bruno,+ca,+usa&tid=22df0cb0e2273c4e"
+	google_movies = new g(url);
+	google_movies.print();
+
+### Specs
+* coffee -wc .
 * mocha
-* coffee google_movies
 
 ### Rails
 rails s --port 4000
 http://refilmagem.dev:4000/admin - (admin@example.com/password)
-
 
 ### Config folders
 * /etc/nginx
@@ -22,7 +28,6 @@ http://refilmagem.dev:4000/admin - (admin@example.com/password)
 	http://www.if-not-true-then-false.com/2010/install-mysql-on-fedora-centos-red-hat-rhel/
 	mysql -u root -p
 	grant all on *.* to root@'24.143.227.86' identified by 'menlopark111';
-
 
 ### Tips
 	arch
