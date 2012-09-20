@@ -14,8 +14,7 @@
   },
   "dependencies": {
     "jsdom": "*",
-    "commander": "*",
-    "coffee-script": "*"
+    "commander": "*"
   },
   "devDependencies": {
     "mocha": "*",

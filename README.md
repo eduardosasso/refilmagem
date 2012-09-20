@@ -2,7 +2,7 @@
 
 ### Node console
 	node
-	g = require("./google_movies");
+	g = require("./lib/google_movies");
 	url = "http://www.google.com.br/movies?near=san+bruno,+ca,+usa&tid=22df0cb0e2273c4e"
 	google_movies = new g(url);
 	google_movies.print();
