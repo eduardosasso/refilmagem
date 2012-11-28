@@ -1,26 +1,25 @@
 Movie = require './movie'
-
-jsdom = require("jsdom")
+jsdom = require 'jsdom'
 
 class MovieParser
-	_movies = []
-	constructor: (url) ->
-		@scrape url
+	constructor: (url, cb) ->
+		# instance variable
+		@_movies = []
+		@scrape(url,cb)
 
-	scrape: (url) ->
+	scrape: (url,cb) ->
 		jsdom.env
 		  html: url
 		  scripts: [ "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ]
 		  done: (errors, window) =>
 		  	# expose errors somewhere
-		    @parse window.$
+		  	@parse(window.$)
+		  	cb(@_movies)
 
 	addMovie: (name, showtimes) ->
-		_movies.push new Movie(name, showtimes)
+		@_movies.push(new Movie(name, showtimes))
 
-	print: ->
-		console.log _movies
-
+	# class method
 	@example: ->
 
 	parse: ($) ->

@@ -1,14 +1,23 @@
 # Refilmagem
 
+# Compile and watch coffee script changes
+* coffee -wc -o ./lib .
+
+### Test showtimes
+node lib/print_showtimes google_movies
+
 ### Node console
 	node
 	g = require("./lib/google_movies");
-	url = "http://www.google.com.br/movies?near=san+bruno,+ca,+usa&tid=22df0cb0e2273c4e"
-	google_movies = new g(url);
-	google_movies.print();
+	url = "http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044"
+	google_movies = new g(url, function(movies){
+		console.log(movies);
+	});
+
+	google = require("./lib/google_movies");
+	google.example();
 
 ### Specs
-* coffee -wc .
 * mocha
 
 ### Rails
