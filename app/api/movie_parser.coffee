@@ -9,6 +9,7 @@ class MovieParser
 		@scrape(url,cb)
 
 	scrape: (url,cb) ->
+		start = new Date().getTime()
 		request({uri: url, encoding: 'binary'}, (error, response, body) =>
 			jsdom.env
 			  html: body
@@ -16,13 +17,22 @@ class MovieParser
 			  done: (errors, window) =>
 			  	# expose errors somewhere
 			  	@parse(window.$)
-			  	cb(@_movies)
+			  	benchmark =  (new Date().getTime()) - start
+			  	cb(@_movies, benchmark)
 		)
 	addMovie: (name, showtimes) ->
 		@_movies.push(new Movie(name, showtimes))
 
+	@example_url: ->
+
 	# class method
 	@example: ->
+		parser =  this.name
+		url = this.example_url()
+		new this(url, (movies, benchmark) ->
+			console.log movies
+			console.log "Execution time: #{benchmark}ms"
+		)
 
 	parse: ($) ->
 

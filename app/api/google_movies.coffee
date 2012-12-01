@@ -11,10 +11,7 @@ class GoogleMovies extends MovieParser
 	addMovie: =>
 		super
 
-	@example: ->
-		url = "http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044"
-		new GoogleMovies(url, (movies) ->
-			console.log movies
-		)
+	@example_url: ->
+		"http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044"
 
 module.exports = GoogleMovies

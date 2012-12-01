@@ -1,5 +1,4 @@
-program = require('commander')
-
+program = require 'commander'
 program
   .command('*')
   .action (parser) ->

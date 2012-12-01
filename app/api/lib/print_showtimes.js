@@ -9,7 +9,6 @@
     return parser.example();
   });
 
-  // TODO loop through all parsers to print on examples
   program.on('--help', function() {
     console.log('  Examples:');
     console.log('');

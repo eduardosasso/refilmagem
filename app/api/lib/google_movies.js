@@ -33,12 +33,8 @@
       return GoogleMovies.__super__.addMovie.apply(this, arguments);
     };
 
-    GoogleMovies.example = function() {
-      var url;
-      url = "http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044";
-      return new GoogleMovies(url, function(movies) {
-        return console.log(movies);
-      });
+    GoogleMovies.example_url = function() {
+      return "http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044";
     };
 
     return GoogleMovies;

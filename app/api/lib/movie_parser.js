@@ -16,7 +16,9 @@
     }
 
     MovieParser.prototype.scrape = function(url, cb) {
-      var _this = this;
+      var start,
+        _this = this;
+      start = new Date().getTime();
       return request({
         uri: url,
         encoding: 'binary'
@@ -25,8 +27,10 @@
           html: body,
           scripts: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"],
           done: function(errors, window) {
+            var benchmark;
             _this.parse(window.$);
-            return cb(_this._movies);
+            benchmark = (new Date().getTime()) - start;
+            return cb(_this._movies, benchmark);
           }
         });
       });
@@ -36,7 +40,17 @@
       return this._movies.push(new Movie(name, showtimes));
     };
 
-    MovieParser.example = function() {};
+    MovieParser.example_url = function() {};
+
+    MovieParser.example = function() {
+      var parser, url;
+      parser = this.name;
+      url = this.example_url();
+      return new this(url, function(movies, benchmark) {
+        console.log(movies);
+        return console.log("Execution time: " + benchmark + "ms");
+      });
+    };
 
     MovieParser.prototype.parse = function($) {};
 
