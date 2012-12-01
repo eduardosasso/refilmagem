@@ -1,6 +1,7 @@
-Movie = require './movie'
 jsdom = require 'jsdom'
 request = require 'request'
+colors = require 'colors'
+Movie = require './movie'
 
 class MovieParser
 	constructor: (url, cb) ->
@@ -30,8 +31,8 @@ class MovieParser
 		parser =  this.name
 		url = this.example_url()
 		new this(url, (movies, benchmark) ->
-			console.log movies
-			console.log "Execution time: #{benchmark}ms"
+			console.log JSON.stringify(movies, null, 2)
+			console.log "Execution time: #{benchmark}ms".bold.green
 		)
 
 	parse: ($) ->

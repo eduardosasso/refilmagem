@@ -9,10 +9,6 @@
       this.showtimes = showtimes != null ? showtimes : [];
     }
 
-    Movie.prototype.setShowtime = function(showtime) {
-      return this.showtimes.push(showtime);
-    };
-
     return Movie;
 
   })();
