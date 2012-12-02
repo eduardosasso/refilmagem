@@ -4,9 +4,11 @@
 * coffee -wc -o ./lib .
 
 ### Test showtimes
+cd refilmagem/app/api
 node lib/print_showtimes google_movies
 
 ### Node console
+	cd refilmagem/app/api
 	node
 	g = require("./lib/google_movies");
 	url = "http://www.google.com.br/movies?near=porto+alegre&tid=1f76f971434a044"
@@ -19,6 +21,7 @@ node lib/print_showtimes google_movies
 
 ### Specs
 * mocha
+* mocha -w -t 5000
 
 ### Rails
 rails s --port 4000

@@ -11,6 +11,10 @@
       this._3d = _3d != null ? _3d : false;
     }
 
+    Movie.prototype.setShowtime = function(showtime) {
+      return this.showtimes.push(showtime);
+    };
+
     return Movie;
 
   })();

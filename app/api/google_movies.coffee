@@ -1,7 +1,7 @@
 MovieParser = require './movie_parser'
 
 class GoogleMovies extends MovieParser
-	SUBTITLE_REGEX = /s*-* (legendado|dublado)*$/i
+	@SUBTITLE_REGEX = /s*-* (legendado|dublado)*$/i
 
 	parse: ($) ->
 		that = this
@@ -13,11 +13,11 @@ class GoogleMovies extends MovieParser
 			that.addMovie(name, showtimes, subtitle)
 
 	subtitle: (movie_name) ->
-		match = SUBTITLE_REGEX.exec(movie_name)
+		match = GoogleMovies.SUBTITLE_REGEX.exec(movie_name)
 		match[1].toLowerCase() if match
 
 	normalize: (movie_name) ->
-		movie_name.replace(SUBTITLE_REGEX, "").trim()
+		movie_name.replace(GoogleMovies.SUBTITLE_REGEX, "").trim()
 
 	addMovie: =>
 		super
