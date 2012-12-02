@@ -8,6 +8,7 @@
   MovieParser = require('./movie_parser');
 
   GoogleMovies = (function(_super) {
+    var SUBTITLE_REGEX;
 
     __extends(GoogleMovies, _super);
 
@@ -16,17 +17,33 @@
       return GoogleMovies.__super__.constructor.apply(this, arguments);
     }
 
+    SUBTITLE_REGEX = /s*-* (legendado|dublado)*$/i;
+
     GoogleMovies.prototype.parse = function($) {
       var that;
       that = this;
       return $(".showtimes .movie").each(function() {
-        var name, showtimes;
+        var name, showtimes, subtitle;
         name = $('.name', this).text();
         showtimes = $.map($('.times', this).text().split('&nbsp'), function(val) {
           return val.replace(/[^a-zA-Z0-9:\-]/g, '');
         });
-        return that.addMovie(name, showtimes);
+        subtitle = that.subtitle(name);
+        name = that.normalize(name);
+        return that.addMovie(name, showtimes, subtitle);
       });
+    };
+
+    GoogleMovies.prototype.subtitle = function(movie_name) {
+      var match;
+      match = SUBTITLE_REGEX.exec(movie_name);
+      if (match) {
+        return match[1].toLowerCase();
+      }
+    };
+
+    GoogleMovies.prototype.normalize = function(movie_name) {
+      return movie_name.replace(SUBTITLE_REGEX, "").trim();
     };
 
     GoogleMovies.prototype.addMovie = function() {

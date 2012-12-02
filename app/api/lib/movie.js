@@ -4,9 +4,11 @@
 
   Movie = (function() {
 
-    function Movie(name, showtimes) {
+    function Movie(name, showtimes, subtitle, _3d) {
       this.name = name;
       this.showtimes = showtimes != null ? showtimes : [];
+      this.subtitle = subtitle != null ? subtitle : 'legendado';
+      this._3d = _3d != null ? _3d : false;
     }
 
     return Movie;

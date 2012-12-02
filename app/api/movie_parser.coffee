@@ -21,8 +21,8 @@ class MovieParser
 			  	benchmark =  (new Date().getTime()) - start
 			  	cb(@_movies, benchmark)
 		)
-	addMovie: (name, showtimes) ->
-		@_movies.push(new Movie(name, showtimes))
+	addMovie: (name, showtimes, subtitle, _3d) ->
+		@_movies.push(new Movie(name, showtimes, subtitle, _3d))
 
 	@example_url: ->
 

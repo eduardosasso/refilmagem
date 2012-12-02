@@ -38,8 +38,8 @@
       });
     };
 
-    MovieParser.prototype.addMovie = function(name, showtimes) {
-      return this._movies.push(new Movie(name, showtimes));
+    MovieParser.prototype.addMovie = function(name, showtimes, subtitle, _3d) {
+      return this._movies.push(new Movie(name, showtimes, subtitle, _3d));
     };
 
     MovieParser.example_url = function() {};
