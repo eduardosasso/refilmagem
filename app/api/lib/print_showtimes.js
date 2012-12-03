@@ -12,7 +12,8 @@
   program.on('--help', function() {
     console.log('  Examples:');
     console.log('');
-    console.log('    $ print_showtimes google');
+    console.log('    $ print_showtimes google_movies');
+    console.log('    $ print_showtimes arcoiris');
     return console.log('');
   });
 
