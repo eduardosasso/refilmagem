@@ -27,7 +27,7 @@
       }, function(error, response, body) {
         return jsdom.env({
           html: body,
-          scripts: ["http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"],
+          scripts: ["http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"],
           done: function(errors, window) {
             var benchmark;
             _this.parse(window.$);

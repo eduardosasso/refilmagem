@@ -1,24 +1,39 @@
 MovieParser = require './movie_parser'
+moment = require 'moment'
 _ = require 'underscore'
 
 class Arcoiris extends MovieParser
+	@SUBTITLE_REGEX = /\s?(-|\/)\s?(LEG|DUB)\s?[.]$/i
 
 	parse: ($) ->
 		that = this
-		id_cinema = 1012
+		id_cinema = "#1012"
+		today = moment().format('DD/MM')
 
 		# TODO pass the id dinamically
 		# Parser should receive a hash with parameters in the constructor
-		$("ul#1012 > li").each ->
+		$("ul#{id_cinema} > li").each ->
 			movie = $('a', this)
 			movie_name = movie.text()
 
-			# TODO needs to validate and break on current date
-			showtimes_all =  $('span:first', movie.next())
+			showtimes_raw = $("h3:contains('#{today}')", movie.next())
+			showtimes_today =  $('span', showtimes_raw.parent())
 
-			showtimes = _.compact($.map(showtimes_all.text().split('|'), (val) -> val.replace(/[^a-zA-Z0-9:\-]/g,'')))
+			return true if showtimes_today.length == 0
 
-			that.addMovie(movie_name, showtimes)
+			showtimes = _.compact($.map(showtimes_today.text().split('|'), (val) -> val.replace(/[^a-zA-Z0-9:\-]/g,'')))
+
+			subtitle =  that.subtitle(movie_name)
+			movie_name = that.normalize(movie_name)
+
+			that.addMovie(movie_name, showtimes, subtitle)
+
+	subtitle: (movie_name) ->
+		"dublado" if /DUB/i.test(movie_name)
+
+	normalize: (movie_name) ->
+		movie_name.replace(Arcoiris.SUBTITLE_REGEX, "").trim()
+
 
 	addMovie: =>
 		super

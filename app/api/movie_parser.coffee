@@ -14,7 +14,7 @@ class MovieParser
 		request({uri: url, encoding: 'binary'}, (error, response, body) =>
 			jsdom.env
 			  html: body
-			  scripts: [ "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ]
+			  scripts: [ "http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ]
 			  done: (errors, window) =>
 			  	# expose errors somewhere
 			  	@parse(window.$)
