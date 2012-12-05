@@ -3,8 +3,6 @@ moment = require 'moment'
 _ = require 'underscore'
 
 class Arcoiris extends MovieParser
-	@SUBTITLE_REGEX = /\s?(-|\/)\s?(LEG|DUB)\s?[.]$/i
-
 	parse: ($) ->
 		that = this
 		id_cinema = "#1012"
@@ -23,17 +21,7 @@ class Arcoiris extends MovieParser
 
 			showtimes = _.compact($.map(showtimes_today.text().split('|'), (val) -> val.replace(/[^a-zA-Z0-9:\-]/g,'')))
 
-			subtitle =  that.subtitle(movie_name)
-			movie_name = that.normalize(movie_name)
-
-			that.addMovie(movie_name, showtimes, subtitle)
-
-	subtitle: (movie_name) ->
-		"dublado" if /DUB/i.test(movie_name)
-
-	normalize: (movie_name) ->
-		movie_name.replace(Arcoiris.SUBTITLE_REGEX, "").trim()
-
+			that.addMovie(movie_name, showtimes)
 
 	addMovie: =>
 		super

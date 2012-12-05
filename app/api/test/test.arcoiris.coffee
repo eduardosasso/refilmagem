@@ -1,11 +1,11 @@
 Showtimes = require "../showtimes"
-GoogleMovies = require "../google_movies"
+Arcoiris = require "../arcoiris"
 _ = require 'underscore'
 
-describe 'Google Movies', ->
+describe 'Arcoiris', ->
 	_movies = []
 	before (done) =>
-		new GoogleMovies(GoogleMovies.example_url(), (movies)->
+		new Arcoiris(Arcoiris.example_url(), (movies)->
 			_movies = movies
 			done()
 		)
@@ -18,5 +18,5 @@ describe 'Google Movies', ->
 
 	it 'should have name without dublado or legendado', ->
 		_.each(_movies, (movie)->
-			expect(movie.name).to.not.match(GoogleMovies.SUBTITLE_REGEX)
+			expect(movie.name).to.not.match(Arcoiris.SUBTITLE_REGEX)
 		)

@@ -20,15 +20,13 @@
       return Arcoiris.__super__.constructor.apply(this, arguments);
     }
 
-    Arcoiris.SUBTITLE_REGEX = /\s?(-|\/)\s?(LEG|DUB)\s?[.]$/i;
-
     Arcoiris.prototype.parse = function($) {
       var id_cinema, that, today;
       that = this;
       id_cinema = "#1012";
       today = moment().format('DD/MM');
       return $("ul" + id_cinema + " > li").each(function() {
-        var movie, movie_name, showtimes, showtimes_raw, showtimes_today, subtitle;
+        var movie, movie_name, showtimes, showtimes_raw, showtimes_today;
         movie = $('a', this);
         movie_name = movie.text();
         showtimes_raw = $("h3:contains('" + today + "')", movie.next());
@@ -39,20 +37,8 @@
         showtimes = _.compact($.map(showtimes_today.text().split('|'), function(val) {
           return val.replace(/[^a-zA-Z0-9:\-]/g, '');
         }));
-        subtitle = that.subtitle(movie_name);
-        movie_name = that.normalize(movie_name);
-        return that.addMovie(movie_name, showtimes, subtitle);
+        return that.addMovie(movie_name, showtimes);
       });
-    };
-
-    Arcoiris.prototype.subtitle = function(movie_name) {
-      if (/DUB/i.test(movie_name)) {
-        return "dublado";
-      }
-    };
-
-    Arcoiris.prototype.normalize = function(movie_name) {
-      return movie_name.replace(Arcoiris.SUBTITLE_REGEX, "").trim();
     };
 
     Arcoiris.prototype.addMovie = function() {

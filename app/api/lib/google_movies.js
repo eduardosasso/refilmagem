@@ -16,33 +16,17 @@
       return GoogleMovies.__super__.constructor.apply(this, arguments);
     }
 
-    GoogleMovies.SUBTITLE_REGEX = /s*-* (legendado|dublado)*$/i;
-
     GoogleMovies.prototype.parse = function($) {
       var that;
       that = this;
       return $(".showtimes .movie").each(function() {
-        var name, showtimes, subtitle;
+        var name, showtimes;
         name = $('.name', this).text();
         showtimes = $.map($('.times', this).text().split('&nbsp'), function(val) {
           return val.replace(/[^a-zA-Z0-9:\-]/g, '');
         });
-        subtitle = that.subtitle(name);
-        name = that.normalize(name);
-        return that.addMovie(name, showtimes, subtitle);
+        return that.addMovie(name, showtimes);
       });
-    };
-
-    GoogleMovies.prototype.subtitle = function(movie_name) {
-      var match;
-      match = GoogleMovies.SUBTITLE_REGEX.exec(movie_name);
-      if (match) {
-        return match[1].toLowerCase();
-      }
-    };
-
-    GoogleMovies.prototype.normalize = function(movie_name) {
-      return movie_name.replace(GoogleMovies.SUBTITLE_REGEX, "").trim();
     };
 
     GoogleMovies.prototype.addMovie = function() {

@@ -20,7 +20,7 @@ node lib/print_showtimes google_movies
 	google.example();
 
 ### Specs
-* mocha
+* mocha -t 5000
 * mocha -w -t 5000
 
 ### Rails
