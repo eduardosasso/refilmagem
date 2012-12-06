@@ -21,13 +21,8 @@
     it('should have movies', function() {
       return _movies.length.should > 0;
     });
-    it('should have showtimes', function() {
+    return it('should have showtimes', function() {
       return _movies[0].showtimes.length.should > 0;
-    });
-    return it('should have name without dublado or legendado', function() {
-      return _.each(_movies, function(movie) {
-        return expect(movie.name).to.not.match(Arcoiris.SUBTITLE_REGEX);
-      });
     });
   });
 

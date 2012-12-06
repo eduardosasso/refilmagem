@@ -7,7 +7,7 @@
   Movie = (function() {
     var clean_regex;
 
-    clean_regex = [/\s*[-|\/]\s*(LEG|DUB)\s*[.]?$/i, /s*-* (legendado|dublado)*$/i];
+    clean_regex = [/\s*[-|\/]*\s*(LEG|DUB)\s*[.]?$/i, /\s*-*\s*(legendado|dublado)\s*$/i];
 
     function Movie(name, showtimes, subtitle, _3d) {
       if (showtimes == null) {
