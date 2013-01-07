@@ -1,11 +1,22 @@
 # Refilmagem
 
-# Compile and watch coffee script changes
-* coffee -wc -o ./lib .
+### Run
+nodemon server.js
 
 ### Test showtimes
 cd refilmagem/app/api
-node lib/print_showtimes google_movies
+coffee apps/showtimes/print_showtimes google_movies
+
+### Specs
+* mocha -t 5000
+* mocha -w -t 5000
+
+* https://github.com/assaf/node-replay
+- record new tests vcr like
+* REPLAY=record mocha -t 5000
+
+- all requests go out and none gets replayed
+* REPLAY=bloody mocha -t 5000
 
 ### Node console
 	cd refilmagem/app/api
@@ -18,30 +29,3 @@ node lib/print_showtimes google_movies
 
 	google = require("./lib/google_movies");
 	google.example();
-
-### Specs
-* mocha -t 5000
-* mocha -w -t 5000
-
-### Rails
-rails s --port 4000
-http://refilmagem.dev:4000/admin - (admin@example.com/password)
-
-### Config folders
-* /etc/nginx
-* /var/log/nginx/access.log
-* /var/log/nginx/error.log
-
-### Deploy
-* cap deploy:check
-
-### mysql 5.5
-	rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-	http://www.if-not-true-then-false.com/2010/install-mysql-on-fedora-centos-red-hat-rhel/
-	mysql -u root -p
-	grant all on *.* to root@'24.143.227.86' identified by 'menlopark111';
-
-### Tips
-	arch
-	uname -a
-	cat /etc/redhat-release

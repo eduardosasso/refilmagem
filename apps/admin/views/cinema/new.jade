@@ -1,0 +1,24 @@
+extends ../../../../views/layout
+
+block content
+	.row
+		.span5.center
+			form
+				fieldset
+					legend #{title}
+					label Nome
+					input.input-xlarge(type="text", id="inputEmail", autofocus="autofocus")
+					label Endereço
+					textarea.field.span4(rows="4")
+					label Cidade
+					select.combobox
+						option
+						each city in cities
+							option(value=#{city.id}) #{city.name}
+					label Adaptador
+					select.combobox
+						option
+						each parser in movie_parsers
+							option(value=#{parser.id}) #{parser.name}
+					.form-actions
+						button.btn.btn-primary(type="submit") Salvar

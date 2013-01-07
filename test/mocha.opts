@@ -1,0 +1,5 @@
+--require test/common.coffee
+--reporter spec
+--ui bdd
+--compilers coffee:coffee-script
+--recursive
