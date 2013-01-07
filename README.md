@@ -1,7 +1,7 @@
 # Refilmagem
 
 ### Run
-nodemon server.js
+nodemon app.coffee
 
 ### Test showtimes
 cd refilmagem/app/api

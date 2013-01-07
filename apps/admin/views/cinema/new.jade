@@ -3,22 +3,22 @@ extends ../../../../views/layout
 block content
 	.row
 		.span5.center
-			form
+			form(action="/admin/cinema", method="post")
 				fieldset
 					legend #{title}
 					label Nome
-					input.input-xlarge(type="text", id="inputEmail", autofocus="autofocus")
+					input.input-xlarge(type="text", name="nome", autofocus="autofocus")
 					label Endereço
-					textarea.field.span4(rows="4")
+					textarea.field.span4(rows="4", name="endereco")
 					label Cidade
-					select.combobox
+					select.combobox(name="cidade")
 						option
 						each city in cities
-							option(value=#{city.id}) #{city.name}
+							option(value="#{city.id}") #{city.name}
 					label Adaptador
-					select.combobox
+					select.combobox(name="adaptador")
 						option
 						each parser in movie_parsers
-							option(value=#{parser.id}) #{parser.name}
+							option(value="#{parser.id}") #{parser.name}
 					.form-actions
 						button.btn.btn-primary(type="submit") Salvar

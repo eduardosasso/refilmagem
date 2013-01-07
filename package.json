@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "express": "3.0.4",
-    "hjs": "*",
     "stylus": "*",
     "nodemon": "~0.6.23",
     "jade": "~0.27.7",

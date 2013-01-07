@@ -7,13 +7,29 @@ routes = (app) ->
 		next()
 
 	app.namespace '/admin', ->
-	  app.get '/cinema', (req, res) ->
-	  	res.render "#{__dirname}/views/cinema/all",
-	  		title: 'Cinemas'
+		app.namespace '/cinema', ->
+		  app.get '/', (req, res) ->
+		  	res.render "#{__dirname}/views/cinema/all",
+		  		title: 'Cinemas'
 
-	  app.get '/cinema/new', cities, movie_parsers, (req, res) ->
-	  	res.render "#{__dirname}/views/cinema/new",
-	  		title: 'Novo cinema'
+		  app.get '/new', cities, movie_parsers, (req, res) ->
+		  	res.render "#{__dirname}/views/cinema/new",
+		  		title: 'Novo cinema'
+
+		  app.post '/', (req, res) ->
+		  	console.log req.body
+		  	res.redirect '/admin/cinema'
+
+		  # Create a Cinema.
+      # app.post '/', (req, res) ->
+      # 	console.log req.body
+      #   # attributes =
+        #   name: req.body.name
+        #   type: req.body.type
+        # pie = new Pie attributes
+        # pie.save () ->
+        #   req.flash 'info', "Pie '#{pie.name}' was saved."
+        #   res.redirect '/admin/pies'
 
 
 module.exports = routes
