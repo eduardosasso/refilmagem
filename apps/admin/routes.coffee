@@ -17,8 +17,10 @@ routes = (app) ->
 		  		title: 'Novo cinema'
 
 		  app.post '/', (req, res) ->
-		  	console.log req.body
-		  	res.redirect '/admin/cinema'
+		  	# console.log req.body
+		  	req.flash 'error', "information message"
+		  	# res.redirect '/admin/cinema'
+		  	res.redirect '/admin/cinema/new'
 
 		  # Create a Cinema.
       # app.post '/', (req, res) ->

@@ -1,8 +1,8 @@
 express = require('express')
 routes = require('./routes')
-user = require('./routes/user')
 http = require('http')
 path = require('path')
+flash = require('connect-flash')
 require('express-namespace')
 
 app = express()
@@ -15,18 +15,19 @@ app.configure ()->
   app.use(express.logger('dev'))
   app.use(express.bodyParser())
   app.use(express.methodOverride())
-  # app.use(express.cookieParser('your secret here'))
-  # app.use(express.session())
+  app.use(express.cookieParser('0nl1n3'))
+  app.use(express.session({ cookie: { maxAge: 60000 }}))
+  app.use(flash())
   app.use(app.router)
   app.use(require('stylus').middleware(__dirname + '/public'))
   app.use(express.static(path.join(__dirname, 'public')))
 
-
 app.configure 'development', ()->
   app.use(express.errorHandler())
 
-app.get('/', routes.index)
+require('./routes/general')(app)
 require('./apps/admin/routes')(app)
+app.get('/', routes.index)
 
 http.createServer(app).listen app.get('port'), ()->
   console.log("Express server listening on port " + app.get('port'))

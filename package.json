@@ -33,7 +33,9 @@
     "jsdom": "0.2.x",
     "mocha": "1.0.x",
     "request": "2.12.x",
-    "moment": "1.7.x"
+    "moment": "1.7.x",
+    "express-form": "0.6.2",
+    "connect-flash": "0.1.0"
   },
   "devDependencies": {
     "mocha": "*",
