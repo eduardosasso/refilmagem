@@ -34,8 +34,11 @@
     "mocha": "1.0.x",
     "request": "2.12.x",
     "moment": "1.7.x",
-    "express-form": "0.6.2",
-    "connect-flash": "0.1.0"
+    "connect-flash": "0.1.0",
+    "express-validator": "0.3.1",
+    "sequelize": "*",
+    "config": "0.4.18",
+    "yaml": "0.2.3"
   },
   "devDependencies": {
     "mocha": "*",

@@ -1,8 +1,10 @@
+express_validator = require('express-validator')
 express = require('express')
 routes = require('./routes')
 http = require('http')
 path = require('path')
 flash = require('connect-flash')
+
 require('express-namespace')
 
 app = express()
@@ -14,6 +16,7 @@ app.configure ()->
   app.use(express.favicon())
   app.use(express.logger('dev'))
   app.use(express.bodyParser())
+  app.use(express_validator)
   app.use(express.methodOverride())
   app.use(express.cookieParser('0nl1n3'))
   app.use(express.session({ cookie: { maxAge: 60000 }}))

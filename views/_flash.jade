@@ -1,6 +1,7 @@
-- var flashTypes = ['info', 'error']
-			each flashType in flashTypes
-				if flash[flashType]
-					.alert(class="alert-#{flashType}")
-						button.close(type="button", data-dismiss="alert")&times;
-						=flash[flashType]
+- var types = ['info', 'error']
+	each type in types
+		if flash[type]
+			.alert(class="alert-#{type}")
+				button.close(type="button", data-dismiss="alert")&times;
+				each message in flash[type]
+					div #{message}

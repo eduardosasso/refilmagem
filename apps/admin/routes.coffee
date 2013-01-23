@@ -1,3 +1,5 @@
+util = require('util')
+
 routes = (app) ->
 	cities = (req, res, next) ->
 		res.locals.cities = [{id: 1, name: 'Porto Alegre'}, {id:2, name: 'São Paulo'}]
@@ -14,24 +16,28 @@ routes = (app) ->
 
 		  app.get '/new', cities, movie_parsers, (req, res) ->
 		  	res.render "#{__dirname}/views/cinema/new",
-		  		title: 'Novo cinema'
+		  		title: 'Novo cinema',
+		  		cinema: req.body
 
-		  app.post '/', (req, res) ->
-		  	# console.log req.body
-		  	req.flash 'error', "information message"
-		  	# res.redirect '/admin/cinema'
-		  	res.redirect '/admin/cinema/new'
 
-		  # Create a Cinema.
-      # app.post '/', (req, res) ->
-      # 	console.log req.body
-      #   # attributes =
-        #   name: req.body.name
-        #   type: req.body.type
-        # pie = new Pie attributes
-        # pie.save () ->
-        #   req.flash 'info', "Pie '#{pie.name}' was saved."
-        #   res.redirect '/admin/pies'
-
+		  app.post '/', cities, movie_parsers, (req, res) ->
+		  	req.assert('nome', 'Nome é obrigatório').isAlpha()
+		  	req.assert('endereco', 'Endereço é obrigatório').isAlpha()
+		  	req.assert('adaptador', 'Adaptador é obrigatório').isInt()
+		  	req.assert('cidade', 'Cidade é obrigatório').isInt()
+		  	errors = req.validationErrors()
+  			if errors
+  				if errors.length == 4
+  					req.flash 'error', "Todos os campos são obrigatórios."
+  				else
+	  				for error in errors
+	  					req.flash 'error', error.msg
+	  			res.render "#{__dirname}/views/cinema/new",
+	  				title: 'Novo Cinema',
+	  				cinema: req.body
+	  			return
+  			else
+  				req.flash 'info', "Cinema registrado!"
+					res.redirect '/admin/cinema/'
 
 module.exports = routes

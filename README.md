@@ -29,3 +29,12 @@ coffee apps/showtimes/print_showtimes google_movies
 
 	google = require("./lib/google_movies");
 	google.example();
+
+### Test Snippets
+coffee
+db = require("./config/database.coffee")
+db.sync()
+
+models = require("./models/models.coffee")
+models.Cinema.drop()
+models.Cinema.create({name: "Cinemark", scraper_url: "abc"})
