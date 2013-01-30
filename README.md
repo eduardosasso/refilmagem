@@ -38,3 +38,6 @@ db.sync()
 models = require("./models/models.coffee")
 models.Cinema.drop()
 models.Cinema.create({name: "Cinemark", scraper_url: "abc"})
+
+models = require("./models/models.coffee")
+models.Cinema.create({scraper_url: "abc"}).on('error', (error) -> console.log error.message)

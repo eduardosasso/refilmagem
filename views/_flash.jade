@@ -1,7 +1,9 @@
 - var types = ['info', 'error']
-	each type in types
-		if flash[type]
-			.alert(class="alert-#{type}")
-				button.close(type="button", data-dismiss="alert")&times;
-				each message in flash[type]
-					div #{message}
+  if locals.error 
+    - flash['error'] = [locals.error]
+  each type in types
+    if flash[type]
+      .alert(class="alert-#{type}")
+        button.close(type="button", data-dismiss="alert")&times;
+        each message in flash[type]
+          div #{message}

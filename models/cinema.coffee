@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define "theater",
+  sequelize.define "cinema",
     name:
       type: DataTypes.STRING
       allowNull: false

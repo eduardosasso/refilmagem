@@ -1,24 +1,24 @@
 extends ../../../../views/layout
 
 block content
-	.row
-		.span5.center
-			form(action="/admin/cinema", method="post")
-				fieldset
-					legend #{title}
-					label Nome
-					input.input-xlarge(type="text", name="nome", autofocus="autofocus", value=cinema.nome)
-					label Endereço
-					textarea.field.span4(rows="4", name="endereco")
-					label Cidade
-					select.combobox(name="cidade")
-						option
-						each city in cities
-							option(value="#{city.id}") #{city.name}
-					label Adaptador
-					select.combobox(name="adaptador")
-						option
-						each parser in movie_parsers
-							option(value="#{parser.id}") #{parser.name}
-					.form-actions
-						button.btn.btn-primary(type="submit") Salvar
+  .row
+    .span5.center
+      form(action="/admin/cinema/new", method="post")
+        fieldset
+          legend #{title}
+          label Nome
+          input.input-xlarge(type="text", name="name", autofocus="autofocus", value=cinema.name)
+          label Endereço
+          textarea.field.span4(rows="4", name="address", value=cinema.address)
+          label Cidade
+          select.combobox(name="cidade")
+            option
+            each city in cities
+              option(value="#{city.id}") #{city.name}
+          label Adaptador
+          select.combobox(name="adaptador")
+            option
+            each parser in movie_parsers
+              option(value="#{parser.id}") #{parser.name}
+          .form-actions
+            button.btn.btn-primary(type="submit") Salvar
