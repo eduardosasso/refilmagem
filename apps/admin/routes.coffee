@@ -17,7 +17,7 @@ routes = (app) ->
 
       app.get '/new', new_movie
       app.post '/new', (req, res, next) ->
-        cinema = models.Cinema.build({nome: req.body.nome, scraper_url: "aaa"})
+        cinema = models.Cinema.build({name: req.body.name, scraper_url: req.body.scraper_url})
         cinema.save()
           .success ()->
             req.flash 'info', "Cinema registrado!"

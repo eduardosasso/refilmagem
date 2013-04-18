@@ -23,6 +23,7 @@ describe 'MovieShowtimes', ->
 		expect(new MovieShowtimes('Rocky / DUB.').name).to.equal('Rocky')
 		expect(new MovieShowtimes('Rocky / DUB').name).to.equal('Rocky')
 		expect(new MovieShowtimes('Rocky /DUB').name).to.equal('Rocky')
+		expect(new MovieShowtimes('OBLIVION  DUBL.').name).to.equal('OBLIVION')
 
 	it 'should extract the subtitle', ->
 		expect(new MovieShowtimes('Rocky legendado').subtitle).to.equal('legendado')
@@ -38,3 +39,4 @@ describe 'MovieShowtimes', ->
 		expect(new MovieShowtimes('Rocky /DUB').subtitle).to.equal('dublado')
 		expect(new MovieShowtimes('Rocky -LEG').subtitle).to.equal('legendado')
 		expect(new MovieShowtimes('Rocky - LEG').subtitle).to.equal('legendado')
+		expect(new MovieShowtimes('OBLIVION  DUBL.').subtitle).to.equal('dublado')

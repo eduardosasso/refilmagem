@@ -1,7 +1,7 @@
 _ = require 'underscore'
 
 class MovieShowtimes
-	clean_regex = [/\s*[-|\/]*\s*(LEG|DUB)\s*[.]?$/i, /\s*-*\s*(legendado|dublado)\s*$/i]
+	clean_regex = [/\s*[-|\/]*\s*(LEG|DUB|DUBL)\s*[.]?$/i, /\s*-*\s*(legendado|dublado)\s*$/i]
 
 	constructor: (name, showtimes = [], subtitle = null, _3d = false) ->
 		@setName(name)

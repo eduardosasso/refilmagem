@@ -9,7 +9,7 @@ describe 'Arcoiris', ->
 		)
 
 	it 'should have movies', =>
-		_movies.length.should > 0
+		_movies.should.not.have.length(0)
 
 	it 'should have showtimes', =>
-		_movies[0].showtimes.length.should > 0
+		_movies[0].showtimes.length.should.be.above(0)

@@ -1,5 +1,7 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define "cinema",
+  adapter = sequelize.import(__dirname + "/../models/adapter")
+
+  cinema = sequelize.define "cinema",
     name:
       type: DataTypes.STRING
       allowNull: false
@@ -10,3 +12,5 @@ module.exports = (sequelize, DataTypes) ->
     scraper_url:
       type: DataTypes.STRING
       allowNull: false
+
+  cinema.belongsTo(adapter)

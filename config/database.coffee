@@ -1,17 +1,18 @@
-config = require('config')
+config = require('./config.json')
 Sequelize = require("sequelize")
 
 sequelize = new Sequelize(
-  config.database.name,
-  config.database.username,
-  config.database.password,
+  config.development.database,
+  config.development.username,
+  config.development.password,
   define:
     underscored: true
+    syncOnAssociation: true
   )
 
 models =
   Cinema: sequelize.import(__dirname + "/../models/cinema")
-  Adaptador: sequelize.import(__dirname + "/../models/adapter")
+  Adapter: sequelize.import(__dirname + "/../models/adapter")
 
 module.exports =
   models: models

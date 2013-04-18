@@ -1,11 +1,12 @@
 # Refilmagem
 
 ### Run
-nodemon app.coffee
+nodemon server.coffee
+http://localhost:8080/
 
 ### Test showtimes
-cd refilmagem/app/api
 coffee apps/showtimes/print_showtimes google_movies
+coffee apps/showtimes/print_showtimes arcoiris
 
 ### Specs
 * mocha -t 5000

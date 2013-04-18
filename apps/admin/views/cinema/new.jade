@@ -20,5 +20,7 @@ block content
             option
             each parser in movie_parsers
               option(value="#{parser.id}") #{parser.name}
+          label URL Cinema
+          input.input-xxlarge(type="text", name="scraper_url", value=cinema.scraper_url)
           .form-actions
             button.btn.btn-primary(type="submit") Salvar

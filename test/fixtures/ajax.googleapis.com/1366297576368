@@ -4,13 +4,13 @@ GET /ajax/libs/jquery/1.8.3/jquery.min.js
 vary: Accept-Encoding
 content-type: text/javascript; charset=UTF-8
 last-modified: Tue, 13 Nov 2012 19:53:02 GMT
-date: Wed, 02 Jan 2013 21:45:42 GMT
-expires: Thu, 02 Jan 2014 21:45:42 GMT
+date: Tue, 16 Apr 2013 05:26:47 GMT
+expires: Wed, 16 Apr 2014 05:26:47 GMT
 x-content-type-options: nosniff
 server: sffe
 x-xss-protection: 1; mode=block
 cache-control: public, max-age=31536000
-age: 408736
+age: 207569
 transfer-encoding: chunked
 
 /*! jQuery v1.8.3 jquery.com | jquery.org/license */

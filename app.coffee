@@ -1,7 +1,6 @@
 express_validator = require('express-validator')
 express = require('express')
 routes = require('./routes')
-http = require('http')
 path = require('path')
 flash = require('connect-flash')
 
@@ -30,7 +29,7 @@ app.configure 'development', ()->
 
 require('./routes/general')(app)
 require('./apps/admin/routes')(app)
+require('./apps/api/routes')(app)
 app.get('/', routes.index)
 
-http.createServer(app).listen app.get('port'), ()->
-  console.log("Express server listening on port " + app.get('port'))
+module.exports = app
